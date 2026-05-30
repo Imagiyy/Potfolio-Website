@@ -78,13 +78,40 @@
         </button>
       </nav>
 
-      <!-- Action Button -->
-      <div>
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
         <a id="resume-btn" href="#" target="_blank" rel="noopener noreferrer"
           class="inline-flex items-center px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer shadow-md shadow-violet-600/10">
           Resume
         </a>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="flex md:hidden items-center justify-center p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-900/50 cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-menu">
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+        </button>
       </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-dropdown" class="hidden md:hidden border-t border-zinc-900 bg-zinc-950/95 backdrop-blur-md px-6 py-4 flex flex-col gap-2">
+      <button data-tab="home" class="mobile-nav-btn w-full text-left px-3 py-2 text-sm font-medium rounded-lg capitalize transition-colors text-white bg-zinc-800/80">
+        home
+      </button>
+      <button data-tab="projects" class="mobile-nav-btn w-full text-left px-3 py-2 text-sm font-medium rounded-lg capitalize transition-colors text-zinc-400 hover:text-white hover:bg-zinc-900/50">
+        projects
+      </button>
+      <button data-tab="skills" class="mobile-nav-btn w-full text-left px-3 py-2 text-sm font-medium rounded-lg capitalize transition-colors text-zinc-400 hover:text-white hover:bg-zinc-900/50">
+        skills
+      </button>
+      <button data-tab="achievements" class="mobile-nav-btn w-full text-left px-3 py-2 text-sm font-medium rounded-lg capitalize transition-colors text-zinc-400 hover:text-white hover:bg-zinc-900/50">
+        achievements
+      </button>
     </div>
   </header>
 

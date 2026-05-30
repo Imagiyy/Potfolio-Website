@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const navButtons = document.querySelectorAll('[data-tab]');
-  const headerNavButtons = document.querySelectorAll('header nav [data-tab]');
+  const headerNavButtons = document.querySelectorAll('header [data-tab]');
 
   function navigateTo(view) {
     if (!tabs.includes(view)) return;
@@ -181,4 +181,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Mobile Dropdown Interactions
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileDropdown = document.getElementById('mobile-dropdown');
+  const mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
+
+  if (mobileMenuBtn && mobileDropdown) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileDropdown.classList.toggle('hidden');
+    });
+
+    // Close dropdown when a link is clicked
+    mobileNavBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        mobileDropdown.classList.add('hidden');
+      });
+    });
+  }
 });
