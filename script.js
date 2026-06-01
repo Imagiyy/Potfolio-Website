@@ -45,31 +45,53 @@ document.addEventListener('DOMContentLoaded', () => {
       { id: 'link-phone', type: 'phone' }
     ];
 
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
     triggers.forEach(t => {
       const el = document.getElementById(t.id);
       if (el) {
         el.addEventListener('click', (e) => {
-          e.preventDefault();
-          
           let value = '';
           let actionUrl = '';
 
           if (t.type === 'linkedin' && CONFIG.linkedinParts) {
             value = CONFIG.linkedinParts.join('');
-            actionUrl = `https://${value}`;
-            window.open(actionUrl, '_blank', 'noopener,noreferrer');
+            if (isMobile) {
+              // Direct navigation on mobile triggers Universal/App Links to open native app
+              el.href = `https://${value}`;
+              el.setAttribute('target', '_blank');
+              el.setAttribute('rel', 'noopener noreferrer');
+            } else {
+              e.preventDefault();
+              actionUrl = `https://${value}`;
+              window.open(actionUrl, '_blank', 'noopener,noreferrer');
+            }
           } else if (t.type === 'github' && CONFIG.githubParts) {
             value = CONFIG.githubParts.join('');
-            actionUrl = `https://${value}`;
-            window.open(actionUrl, '_blank', 'noopener,noreferrer');
+            if (isMobile) {
+              el.href = `https://${value}`;
+              el.setAttribute('target', '_blank');
+              el.setAttribute('rel', 'noopener noreferrer');
+            } else {
+              e.preventDefault();
+              actionUrl = `https://${value}`;
+              window.open(actionUrl, '_blank', 'noopener,noreferrer');
+            }
           } else if (t.type === 'email' && CONFIG.emailParts) {
             value = CONFIG.emailParts.join('');
-            actionUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${value}`;
-            window.open(actionUrl, '_blank', 'noopener,noreferrer');
+            if (isMobile) {
+              // Standard mailto: scheme opens native Mail / Gmail app on mobile
+              el.href = `mailto:${value}`;
+              el.removeAttribute('target');
+            } else {
+              e.preventDefault();
+              actionUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${value}`;
+              window.open(actionUrl, '_blank', 'noopener,noreferrer');
+            }
           } else if (t.type === 'phone' && CONFIG.phoneParts) {
             value = CONFIG.phoneParts.join('');
-            actionUrl = `tel:${value}`;
-            window.location.href = actionUrl;
+            el.href = `tel:${value}`;
+            el.removeAttribute('target');
           }
         });
       }
@@ -151,6 +173,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (logoBtn) {
     logoBtn.addEventListener('click', () => {
       navigateTo('home');
+      if (mobileDropdown) {
+        mobileDropdown.classList.add('hidden');
+        updateMenuIcons(true);
+      }
     });
   }
 
@@ -186,16 +212,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileDropdown = document.getElementById('mobile-dropdown');
   const mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  function updateMenuIcons(isClosed) {
+    if (menuIcon && closeIcon) {
+      if (isClosed) {
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      } else {
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      }
+    }
+  }
 
   if (mobileMenuBtn && mobileDropdown) {
     mobileMenuBtn.addEventListener('click', () => {
-      mobileDropdown.classList.toggle('hidden');
+      const isHidden = mobileDropdown.classList.toggle('hidden');
+      updateMenuIcons(isHidden);
     });
 
     // Close dropdown when a link is clicked
     mobileNavBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         mobileDropdown.classList.add('hidden');
+        updateMenuIcons(true);
       });
     });
   }
