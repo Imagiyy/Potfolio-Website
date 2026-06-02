@@ -1,4 +1,0 @@
-{
-  "buildCommand": "echo \"const CONFIG = $CONFIG_JSON;\" > config.js",
-  "outputDirectory": "."
-}

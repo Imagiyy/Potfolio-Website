@@ -4,11 +4,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="meta-title">ECE Portfolio</title>
+  <title id="meta-title">ELC Portfolio</title>
   <meta name="description" id="meta-desc"
     content="ECE Portfolio. Specializing in AI/ML, edge computer vision, embedded systems, and computer architecture." />
   <!-- Load configuration details -->
   <script src="config.js"></script>
+  <!-- Tailwind CSS Play CDN Custom Configuration -->
+  <script>
+    if (typeof CONFIG !== 'undefined' && CONFIG.theme) {
+      window.tailwind = {
+        theme: {
+          extend: {
+            colors: {
+              violet: {
+                400: CONFIG.theme.primaryColor || '#a78bfa',
+                500: CONFIG.theme.primaryColor || '#8b5cf6',
+                600: CONFIG.theme.primaryColor || '#7c3aed',
+              },
+              emerald: {
+                400: CONFIG.theme.secondaryColor || '#34d399',
+                500: CONFIG.theme.secondaryColor || '#10b981',
+              }
+            }
+          }
+        }
+      };
+    }
+  </script>
   <!-- Tailwind CSS Play CDN for utility classes -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Custom stylesheet for transitions, scrollbars, and backgrounds -->
@@ -16,7 +38,7 @@
 </head>
 
 <body
-  class="bg-zinc-950 text-zinc-100 min-h-screen relative overflow-x-hidden selection:bg-violet-500/30 selection:text-violet-200">
+  class="bg-[#050507] text-zinc-100 min-h-screen relative overflow-x-hidden selection:bg-violet-500/30 selection:text-violet-200">
 
   <!-- Mobile Layout Wrapper to prevent overflow and empty space -->
   <div class="relative w-full min-h-screen overflow-hidden flex flex-col">
@@ -24,1135 +46,285 @@
     <!-- Background Graphic Texture -->
     <div class="absolute inset-0 professional-grid-bg pointer-events-none z-0"></div>
 
-  <!-- Ambient highlights -->
-  <div
-    class="absolute top-[10%] left-1/4 -translate-x-1/2 w-[600px] h-[600px] ambient-glow-violet pointer-events-none z-0">
-  </div>
-  <div
-    class="absolute top-[30%] right-1/4 translate-x-1/2 w-[550px] h-[550px] ambient-glow-emerald pointer-events-none z-0">
-  </div>
-
-  <!-- HEADER / NAVIGATION -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-900">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-
-      <!-- Logo / Brand -->
-      <button id="logo-btn" class="flex items-center gap-2 group cursor-pointer">
-        <div
-          class="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-violet-400 group-hover:border-violet-400 transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="lucide lucide-cpu">
-            <rect width="16" height="16" x="4" y="4" rx="2" />
-            <rect width="6" height="6" x="9" y="9" rx="1" />
-            <path d="M9 1v3" />
-            <path d="M15 1v3" />
-            <path d="M9 20v3" />
-            <path d="M15 20v3" />
-            <path d="M20 9h3" />
-            <path d="M20 15h3" />
-            <path d="M1 9h3" />
-            <path d="M1 15h3" />
-          </svg>
-        </div>
-        <span id="logo-name"
-          class="font-bold text-base tracking-tight text-white group-hover:text-violet-400 transition-colors">
-          Abrar M.
-        </span>
-      </button>
-
-      <!-- Navigation Options -->
-      <nav class="hidden md:flex items-center gap-2">
-        <button data-tab="home"
-          class="px-3 py-1.5 text-sm font-medium rounded-lg capitalize transition-colors cursor-pointer text-white bg-zinc-800/80">
-          home
-        </button>
-        <button data-tab="projects"
-          class="px-3 py-1.5 text-sm font-medium rounded-lg capitalize transition-colors cursor-pointer text-zinc-400 hover:text-white hover:bg-zinc-900/50">
-          projects
-        </button>
-        <button data-tab="skills"
-          class="px-3 py-1.5 text-sm font-medium rounded-lg capitalize transition-colors cursor-pointer text-zinc-400 hover:text-white hover:bg-zinc-900/50">
-          skills
-        </button>
-        <button data-tab="achievements"
-          class="px-3 py-1.5 text-sm font-medium rounded-lg capitalize transition-colors cursor-pointer text-zinc-400 hover:text-white hover:bg-zinc-900/50">
-          achievements
-        </button>
-      </nav>
-
-      <!-- Action Buttons -->
-      <div class="flex items-center gap-3">
-        <a id="resume-btn" href="#" target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer shadow-md shadow-violet-600/10">
-          Resume
-        </a>
-        
-        <!-- Mobile Menu Button -->
-        <button id="mobile-menu-btn" class="flex md:hidden items-center justify-center p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-900/50 cursor-pointer">
-          <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="lucide lucide-menu">
-            <line x1="4" x2="20" y1="12" y2="12" />
-            <line x1="4" x2="20" y1="6" y2="6" />
-            <line x1="4" x2="20" y1="18" y2="18" />
-          </svg>
-          <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="lucide lucide-x hidden">
-            <line x1="18" x2="6" y1="6" y2="18" />
-            <line x1="6" x2="18" y1="6" y2="18" />
-          </svg>
-        </button>
-      </div>
+    <!-- Ambient highlights -->
+    <div
+      class="absolute top-[10%] left-1/4 -translate-x-1/2 w-[600px] h-[600px] ambient-glow-violet animate-pulse-glow-primary pointer-events-none z-0">
+    </div>
+    <div
+      class="absolute top-[30%] right-1/4 translate-x-1/2 w-[550px] h-[550px] ambient-glow-emerald animate-pulse-glow-secondary pointer-events-none z-0">
     </div>
 
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobile-dropdown" class="hidden md:hidden border-t border-zinc-900 bg-zinc-950/95 backdrop-blur-md px-6 py-4 flex flex-col gap-2">
-      <button data-tab="home" class="mobile-nav-btn w-full text-left px-3 py-2 text-sm font-medium rounded-lg capitalize transition-colors text-white bg-zinc-800/80">
-        home
-      </button>
-      <button data-tab="projects" class="mobile-nav-btn w-full text-left px-3 py-2 text-sm font-medium rounded-lg capitalize transition-colors text-zinc-400 hover:text-white hover:bg-zinc-900/50">
-        projects
-      </button>
-      <button data-tab="skills" class="mobile-nav-btn w-full text-left px-3 py-2 text-sm font-medium rounded-lg capitalize transition-colors text-zinc-400 hover:text-white hover:bg-zinc-900/50">
-        skills
-      </button>
-      <button data-tab="achievements" class="mobile-nav-btn w-full text-left px-3 py-2 text-sm font-medium rounded-lg capitalize transition-colors text-zinc-400 hover:text-white hover:bg-zinc-900/50">
-        achievements
-      </button>
-    </div>
-  </header>
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#050507]/80 backdrop-blur-md border-b border-zinc-900 animate-entrance-fade">
+      <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 
-  <!-- MAIN CONTAINER -->
-  <main class="max-w-6xl mx-auto px-6 pt-28 pb-20 relative z-10 min-h-[calc(100vh-12rem)] flex flex-col justify-center">
-
-    <!-- 1. HOME VIEW -->
-    <section id="section-home" class="section-content grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-8">
-      <div class="lg:col-span-7 space-y-6">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] font-sans">
-          Bridging Hardware &amp; <br />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-300">
-            Intelligent Software
+        <!-- Logo / Brand -->
+        <button id="logo-btn" class="flex items-center gap-2 group cursor-pointer">
+          <div
+            class="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-violet-400 group-hover:border-violet-400 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-cpu">
+              <rect width="16" height="16" x="4" y="4" rx="2" />
+              <rect width="6" height="6" x="9" y="9" rx="1" />
+              <path d="M9 1v3" />
+              <path d="M15 1v3" />
+              <path d="M9 20v3" />
+              <path d="M15 20v3" />
+              <path d="M20 9h3" />
+              <path d="M20 15h3" />
+              <path d="M1 9h3" />
+              <path d="M1 15h3" />
+            </svg>
+          </div>
+          <span id="logo-name"
+            class="font-bold text-base tracking-tight text-white group-hover:text-violet-400 transition-colors">
+            Portfolio
           </span>
-        </h1>
+        </button>
 
-        <p class="text-base text-zinc-400 leading-relaxed font-sans max-w-xl">
-          Bridging the gap between hardware architecture and low-level software synthesis to build resilient,
-          high-performance systems. Actively developing deep expertise in computer architecture, microprocessors, and
-          machine learning telemetry.
-        </p>
-
-        <div class="flex flex-wrap gap-4 pt-4">
+        <!-- Navigation Options -->
+        <nav class="hidden md:flex items-center gap-2">
+          <button data-tab="home"
+            class="px-3 py-1.5 text-sm font-medium rounded-lg capitalize transition-colors cursor-pointer text-white bg-zinc-800/80">
+            Home
+          </button>
           <button data-tab="projects"
-            class="px-5 py-3 bg-violet-600 hover:bg-violet-500 text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer shadow-md shadow-violet-600/10">
-            View Projects
+            class="px-3 py-1.5 text-sm font-medium rounded-lg capitalize transition-colors cursor-pointer text-zinc-400 hover:text-white hover:bg-zinc-900/50">
+            Projects
           </button>
           <button data-tab="skills"
-            class="px-5 py-3 bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-800 text-xs font-semibold rounded-lg transition-colors cursor-pointer">
-            Skills Matrix
+            class="px-3 py-1.5 text-sm font-medium rounded-lg capitalize transition-colors cursor-pointer text-zinc-400 hover:text-white hover:bg-zinc-900/50">
+            Skills
+          </button>
+          <button data-tab="achievements"
+            class="px-3 py-1.5 text-sm font-medium rounded-lg capitalize transition-colors cursor-pointer text-zinc-400 hover:text-white hover:bg-zinc-900/50">
+            Achievements
+          </button>
+        </nav>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center gap-3">
+          <a id="resume-btn" href="#" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer shadow-md shadow-violet-600/10 btn-shimmer">
+            Resume
+          </a>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn"
+            class="flex md:hidden items-center justify-center p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-900/50 cursor-pointer">
+            <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-menu">
+              <line x1="4" x2="20" y1="12" y2="12" />
+              <line x1="4" x2="20" y1="6" y2="6" />
+              <line x1="4" x2="20" y1="18" y2="18" />
+            </svg>
+            <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-x hidden">
+              <line x1="18" x2="6" y1="6" y2="18" />
+              <line x1="6" x2="18" y1="6" y2="18" />
+            </svg>
           </button>
         </div>
       </div>
 
-      <!-- Right Column: Clean Institutional Profile Summary -->
-      <div class="lg:col-span-5">
-        <div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-8 shadow-2xl relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-violet-500/5 rounded-bl-full blur-2xl pointer-events-none">
-          </div>
-          <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="text-violet-400">
-              <path
-                d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
-              <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
-            </svg>
-            <span>Education &amp; Credentials</span>
-          </h3>
-
-          <div class="space-y-6">
-            <div class="border-l-2 border-emerald-500/30 pl-4 space-y-1">
-              <h4 id="profile-college" class="text-sm font-semibold text-white">Amrita Vishwa Vidyapeetham</h4>
-              <p id="profile-title" class="text-xs text-emerald-400">Electrical &amp; Computer Engineering</p>
-              <p class="text-xs text-zinc-400 leading-relaxed pt-1">
-                Deep emphasis on Python systems programming, computer vision pipelines, and high-voltage battery
-                telemetry designs.
-              </p>
-            </div>
-          </div>
-        </div>
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-dropdown"
+        class="hidden md:hidden border-t border-zinc-900 bg-zinc-950/95 backdrop-blur-md px-6 py-4 flex flex-col gap-2">
+        <button data-tab="home"
+          class="mobile-nav-btn w-full text-left px-3 py-2 text-sm font-medium rounded-lg capitalize transition-colors text-white bg-zinc-800/80">
+          Home
+        </button>
+        <button data-tab="projects"
+          class="mobile-nav-btn w-full text-left px-3 py-2 text-sm font-medium rounded-lg capitalize transition-colors text-zinc-400 hover:text-white hover:bg-zinc-900/50">
+          Projects
+        </button>
+        <button data-tab="skills"
+          class="mobile-nav-btn w-full text-left px-3 py-2 text-sm font-medium rounded-lg capitalize transition-colors text-zinc-400 hover:text-white hover:bg-zinc-900/50">
+          Skills
+        </button>
+        <button data-tab="achievements"
+          class="mobile-nav-btn w-full text-left px-3 py-2 text-sm font-medium rounded-lg capitalize transition-colors text-zinc-400 hover:text-white hover:bg-zinc-900/50">
+          Achievements
+        </button>
       </div>
-    </section>
+    </header>
 
-    <!-- 2. PROJECTS VIEW -->
-    <section id="section-projects" class="section-content hidden space-y-8 py-4">
-      <div class="border-b border-zinc-900 pb-5">
-        <h2 class="text-3xl font-bold tracking-tight text-white">Engineered Systems &amp; Projects</h2>
-        <p class="text-sm text-zinc-400 mt-2 max-w-xl">
-          A showcase of hardware synthesis, edge computer vision platforms, and control systems.
-        </p>
-      </div>
+    <!-- MAIN CONTAINER -->
+    <main
+      class="max-w-6xl mx-auto px-6 pt-28 pb-28 relative z-10 min-h-[calc(100vh-12rem)] flex flex-col justify-center animate-entrance-container">
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <!-- RISC-V Microprocessor Synthesis -->
-        <article
-          class="project-card bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-6 flex flex-col justify-between hover:border-zinc-700 transition-colors relative overflow-hidden group">
+      <!-- 1. HOME VIEW -->
+      <section id="section-home" class="section-content grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-8">
+        <div class="lg:col-span-7 space-y-6">
           <div>
-            <div class="flex items-start justify-between mb-4">
-              <div
-                class="w-10 h-10 rounded-lg bg-zinc-850 border border-zinc-800 flex items-center justify-center text-violet-400">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="text-violet-400">
-                  <rect width="16" height="16" x="4" y="4" rx="2" />
-                  <rect width="6" height="6" x="9" y="9" rx="1" />
-                  <path d="M9 1v3" />
-                  <path d="M15 1v3" />
-                  <path d="M9 20v3" />
-                  <path d="M15 20v3" />
-                  <path d="M20 9h3" />
-                  <path d="M20 15h3" />
-                  <path d="M1 9h3" />
-                  <path d="M1 15h3" />
-                </svg>
-              </div>
-              <div class="flex items-center gap-2">
-                <span
-                  class="text-xs font-medium bg-zinc-800 border border-zinc-700 text-zinc-400 rounded-lg px-2 py-0.5">
-                  2024
-                </span>
-              </div>
-            </div>
-
-            <h3 class="text-lg font-bold text-white tracking-tight group-hover:text-violet-400 transition-colors">
-              RISC-V Microprocessor Synthesis
-            </h3>
-
-            <p class="text-zinc-400 text-sm leading-relaxed mt-4">
-              Designed and implemented a 32-bit pipelined RISC-V processor from scratch in SystemVerilog, optimized for
-              low power consumption and high throughput instruction execution.
+            <span class="text-xs font-semibold uppercase text-zinc-500 tracking-wider">Professional Profile</span>
+            <h1 id="hero-name" class="text-4xl md:text-5xl font-extrabold tracking-tight text-white mt-2 font-sans">
+              Developer
+            </h1>
+            <p id="hero-title" class="text-lg md:text-xl font-medium text-zinc-400 mt-1">
+              Professional Title
             </p>
-
-            <!-- Expandable Specifications -->
-            <div id="details-riscv-processor" class="mt-6 pt-5 border-t border-zinc-800/80 space-y-4 hidden">
-              <p class="text-zinc-400 text-sm leading-relaxed">
-                Synthesized an efficient 32-bit microprocessor implementing the base RV32I ISA. The architecture
-                integrates high-performance pipelined execution stages with fully synchronous state control and memory
-                interfaces. The pipeline features dynamic bypass networks that mitigate hazard stalls during intensive
-                calculations.
-              </p>
-
-              <div class="bg-zinc-950 border border-zinc-800/80 rounded-lg p-4">
-                <span class="block text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">
-                  Technical Specifications
-                </span>
-
-                <div class="grid grid-cols-2 gap-3">
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Clock Freq</span>
-                    <span class="text-zinc-200 font-semibold text-xs">50 MHz (FPGA Target)</span>
-                  </div>
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Pipeline</span>
-                    <span class="text-zinc-200 font-semibold text-xs">5-Stage (IF, ID, EX, MEM, WB)</span>
-                  </div>
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Hazards</span>
-                    <span class="text-zinc-200 font-semibold text-xs">Full forwarding / Hazard detection</span>
-                  </div>
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Total Area</span>
-                    <span class="text-zinc-200 font-semibold text-xs">1,245 LUTs (Xilinx Artix-7)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
-          <!-- Footer Toggles & Tags -->
-          <div class="mt-8 flex flex-col gap-4">
-            <button data-project-id="riscv-processor"
-              class="project-toggle-btn flex items-center gap-1 text-xs font-semibold text-violet-400 hover:text-violet-300 cursor-pointer self-start">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="chevron-icon">
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-              <span class="btn-text">Show Details</span>
+          <p id="hero-desc" class="text-sm text-zinc-400 leading-relaxed font-sans max-w-xl">
+            Professional summary description.
+          </p>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <button data-tab="projects"
+              class="px-5 py-3 bg-violet-600 hover:bg-violet-500 text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer shadow-md shadow-violet-600/10 btn-shimmer">
+              View Projects
             </button>
-
-            <div class="flex flex-wrap gap-1.5 border-t border-zinc-800/60 pt-4">
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">SystemVerilog</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">Vivado</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">ModelSim</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">Computer
-                Arch</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- ATS2: Autonomous Retail Monitoring -->
-        <article
-          class="project-card bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-6 flex flex-col justify-between hover:border-zinc-700 transition-colors relative overflow-hidden group">
-          <div>
-            <div class="flex items-start justify-between mb-4">
-              <div
-                class="w-10 h-10 rounded-lg bg-zinc-850 border border-zinc-800 flex items-center justify-center text-violet-400">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="text-violet-400">
-                  <path d="m2 17 10 9 10-9" />
-                  <path d="m2 12 10 9 10-9" />
-                  <path d="m12 3-10 9 10 9 10-9-10-9Z" />
-                </svg>
-              </div>
-              <div class="flex items-center gap-2">
-                <span
-                  class="text-xs font-medium bg-zinc-800 border border-zinc-700 text-zinc-400 rounded-lg px-2 py-0.5">
-                  2023
-                </span>
-              </div>
-            </div>
-
-            <h3 class="text-lg font-bold text-white tracking-tight group-hover:text-violet-400 transition-colors">
-              ATS2: Autonomous Retail Monitoring
-            </h3>
-
-            <p class="text-zinc-400 text-sm leading-relaxed mt-4">
-              Developed a scalable computer vision pipeline for autonomous retail inventory tracking. Deployed YOLOv8
-              models optimized for edge devices (Jetson Nano) to detect product stock levels in real-time.
-            </p>
-
-            <!-- Expandable Specifications -->
-            <div id="details-ats2-retail-monitoring" class="mt-6 pt-5 border-t border-zinc-800/80 space-y-4 hidden">
-              <p class="text-zinc-400 text-sm leading-relaxed">
-                Created a high-fidelity image recognition monitoring program serving active video stream processing.
-                Runs real-time inferencing with custom-trained YOLOv8 classifiers. Edge workloads are accelerated via
-                TensorRT engines to deliver latency-bounded status triggers on critical retail shelves.
-              </p>
-
-              <div class="bg-zinc-950 border border-zinc-800/80 rounded-lg p-4">
-                <span class="block text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">
-                  Technical Specifications
-                </span>
-
-                <div class="grid grid-cols-2 gap-3">
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Inference Speed</span>
-                    <span class="text-zinc-200 font-semibold text-xs">28 FPS on Jetson Nano</span>
-                  </div>
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Model Accuracy</span>
-                    <span class="text-zinc-200 font-semibold text-xs">94.2% mAP@0.5</span>
-                  </div>
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Integration</span>
-                    <span class="text-zinc-200 font-semibold text-xs">Edge REST API / SQL Sync</span>
-                  </div>
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Hardware Platform</span>
-                    <span class="text-zinc-200 font-semibold text-xs">NVIDIA Jetson Nano Dev Kit</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Footer Toggles & Tags -->
-          <div class="mt-8 flex flex-col gap-4">
-            <button data-project-id="ats2-retail-monitoring"
-              class="project-toggle-btn flex items-center gap-1 text-xs font-semibold text-violet-400 hover:text-violet-300 cursor-pointer self-start">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="chevron-icon">
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-              <span class="btn-text">Show Details</span>
+            <button data-tab="skills"
+              class="px-5 py-3 bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-800 text-xs font-semibold rounded-lg transition-colors cursor-pointer">
+              Skills Matrix
             </button>
-
-            <div class="flex flex-wrap gap-1.5 border-t border-zinc-800/60 pt-4">
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">Computer
-                Vision</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">Python</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">YOLOv8</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">Edge
-                AI</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">TensorRT</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Autonomous Navigation Robot -->
-        <article
-          class="project-card bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-6 flex flex-col justify-between hover:border-zinc-700 transition-colors relative overflow-hidden group">
-          <div>
-            <div class="flex items-start justify-between mb-4">
-              <div
-                class="w-10 h-10 rounded-lg bg-zinc-850 border border-zinc-800 flex items-center justify-center text-violet-400">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="text-violet-400">
-                  <rect width="16" height="16" x="4" y="4" rx="2" />
-                  <rect width="6" height="6" x="9" y="9" rx="1" />
-                  <path d="M9 1v3" />
-                  <path d="M15 1v3" />
-                  <path d="M9 20v3" />
-                  <path d="M15 20v3" />
-                  <path d="M20 9h3" />
-                  <path d="M20 15h3" />
-                  <path d="M1 9h3" />
-                  <path d="M1 15h3" />
-                </svg>
-              </div>
-              <div class="flex items-center gap-2">
-                <span
-                  class="text-xs font-medium bg-zinc-800 border border-zinc-700 text-zinc-400 rounded-lg px-2 py-0.5">
-                  2023
-                </span>
-              </div>
-            </div>
-
-            <h3 class="text-lg font-bold text-white tracking-tight group-hover:text-violet-400 transition-colors">
-              Autonomous Navigation Robot
-            </h3>
-
-            <p class="text-zinc-400 text-sm leading-relaxed mt-4">
-              Developed embedded firmware for a differential drive robot utilizing PID controllers and LiDAR data
-              filtering for real-time obstacle avoidance and path planning.
-            </p>
-
-            <!-- Expandable Specifications -->
-            <div id="details-autonomous-robot" class="mt-6 pt-5 border-t border-zinc-800/80 space-y-4 hidden">
-              <p class="text-zinc-400 text-sm leading-relaxed">
-                Programmed STM32 drivers for precise wheel encoder feedback, motor pulse-width modulation signals, and
-                serial interfaces with a laser range scanner. The core software schedules concurrent tasks via a
-                low-overhead scheduler to compute immediate feedback loops without signal drift.
-              </p>
-
-              <div class="bg-zinc-950 border border-zinc-800/80 rounded-lg p-4">
-                <span class="block text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">
-                  Technical Specifications
-                </span>
-
-                <div class="grid grid-cols-2 gap-3">
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">MCU</span>
-                    <span class="text-zinc-200 font-semibold text-xs">STM32F401RE (Cortex-M4)</span>
-                  </div>
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Sensors</span>
-                    <span class="text-zinc-200 font-semibold text-xs">RPLiDAR A1, MPU6050 IMU</span>
-                  </div>
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Control Loop</span>
-                    <span class="text-zinc-200 font-semibold text-xs">100Hz Real-Time Scheduler</span>
-                  </div>
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Battery Life</span>
-                    <span class="text-zinc-200 font-semibold text-xs">4.5 Hours continuous run</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Footer Toggles & Tags -->
-          <div class="mt-8 flex flex-col gap-4">
-            <button data-project-id="autonomous-robot"
-              class="project-toggle-btn flex items-center gap-1 text-xs font-semibold text-violet-400 hover:text-violet-300 cursor-pointer self-start">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="chevron-icon">
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-              <span class="btn-text">Show Details</span>
-            </button>
-
-            <div class="flex flex-wrap gap-1.5 border-t border-zinc-800/60 pt-4">
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">C++</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">ROS</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">STM32</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">Control
-                Systems</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">LiDAR</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- IEEE TEC Electric Vehicle Design -->
-        <article
-          class="project-card bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-6 flex flex-col justify-between hover:border-zinc-700 transition-colors relative overflow-hidden group">
-          <div>
-            <div class="flex items-start justify-between mb-4">
-              <div
-                class="w-10 h-10 rounded-lg bg-zinc-850 border border-zinc-800 flex items-center justify-center text-violet-400">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="text-violet-400">
-                  <path d="m2 17 10 9 10-9" />
-                  <path d="m2 12 10 9 10-9" />
-                  <path d="m12 3-10 9 10 9 10-9-10-9Z" />
-                </svg>
-              </div>
-              <div class="flex items-center gap-2">
-                <span
-                  class="text-xs font-medium bg-zinc-800 border border-zinc-700 text-zinc-400 rounded-lg px-2 py-0.5">
-                  2024
-                </span>
-              </div>
-            </div>
-
-            <h3 class="text-lg font-bold text-white tracking-tight group-hover:text-violet-400 transition-colors">
-              IEEE TEC Electric Vehicle Design
-            </h3>
-
-            <p class="text-zinc-400 text-sm leading-relaxed mt-4">
-              Led the electrical systems sub-team for an IEEE student competition to design a small-scale electric
-              vehicle. Modeled battery pack thermal dynamics and motor control algorithms using MATLAB/Simulink.
-            </p>
-
-            <!-- Expandable Specifications -->
-            <div id="details-ieee-tec-ev" class="mt-6 pt-5 border-t border-zinc-800/80 space-y-4 hidden">
-              <p class="text-zinc-400 text-sm leading-relaxed">
-                Designed fully certified double-layer PCB shield interfaces routing telemetry signals from battery packs
-                to telemetry logs. The microcontroller hosts high-speed CAN bus routing nodes delivering accurate
-                telemetry state arrays back to parent aggregators.
-              </p>
-
-              <div class="bg-zinc-950 border border-zinc-800/80 rounded-lg p-4">
-                <span class="block text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">
-                  Technical Specifications
-                </span>
-
-                <div class="grid grid-cols-2 gap-3">
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Telemetry MCU</span>
-                    <span class="text-zinc-200 font-semibold text-xs">STM32F4 MCU core</span>
-                  </div>
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Communication</span>
-                    <span class="text-zinc-200 font-semibold text-xs">CAN 2.0B Interface Bus</span>
-                  </div>
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Update Rate</span>
-                    <span class="text-zinc-200 font-semibold text-xs">100Hz Transmission Rate</span>
-                  </div>
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">System Status</span>
-                    <span class="text-zinc-200 font-semibold text-xs">Operational &amp; Approved</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Footer Toggles & Tags -->
-          <div class="mt-8 flex flex-col gap-4">
-            <button data-project-id="ieee-tec-ev"
-              class="project-toggle-btn flex items-center gap-1 text-xs font-semibold text-violet-400 hover:text-violet-300 cursor-pointer self-start">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="chevron-icon">
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-              <span class="btn-text">Show Details</span>
-            </button>
-
-            <div class="flex flex-wrap gap-1.5 border-t border-zinc-800/60 pt-4">
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">Embedded
-                Systems</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">MATLAB</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">Simulink</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">PCB
-                Design</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">C/C++</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">CAN
-                Bus</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- General Studies News Collage -->
-        <article
-          class="project-card bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-6 flex flex-col justify-between hover:border-zinc-700 transition-colors relative overflow-hidden group">
-          <div>
-            <div class="flex items-start justify-between mb-4">
-              <div
-                class="w-10 h-10 rounded-lg bg-zinc-850 border border-zinc-800 flex items-center justify-center text-violet-400">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="text-violet-400">
-                  <polyline points="16 18 22 12 16 6" />
-                  <polyline points="8 6 2 12 8 18" />
-                </svg>
-              </div>
-              <div class="flex items-center gap-2">
-                <span
-                  class="text-xs font-medium bg-zinc-800 border border-zinc-700 text-zinc-400 rounded-lg px-2 py-0.5">
-                  2023
-                </span>
-              </div>
-            </div>
-
-            <h3 class="text-lg font-bold text-white tracking-tight group-hover:text-violet-400 transition-colors">
-              General Studies News Collage
-            </h3>
-
-            <p class="text-zinc-400 text-sm leading-relaxed mt-4">
-              Designed an automated web scraping and natural language processing system to curate and summarize relevant
-              global news for general studies. Utilized Beautiful Soup and spaCy for entity extraction and
-              summarization.
-            </p>
-
-            <!-- Expandable Specifications -->
-            <div id="details-news-collage-nlp" class="mt-6 pt-5 border-t border-zinc-800/80 space-y-4 hidden">
-              <p class="text-zinc-400 text-sm leading-relaxed">
-                Built an elegant server-side information curation machine that processes daily global news feeds.
-                Computes semantic relevance vectors and extracts critical named entities to compose structured web
-                highlights reports on geopolitical developments.
-              </p>
-
-              <div class="bg-zinc-950 border border-zinc-800/80 rounded-lg p-4">
-                <span class="block text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">
-                  Technical Specifications
-                </span>
-
-                <div class="grid grid-cols-2 gap-3">
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Processor Speed</span>
-                    <span class="text-zinc-200 font-semibold text-xs">1.2m stories parsed/hr</span>
-                  </div>
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Extraction</span>
-                    <span class="text-zinc-200 font-semibold text-xs">98% precision (geopolitical)</span>
-                  </div>
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Database</span>
-                    <span class="text-zinc-200 font-semibold text-xs">PostgreSQL text stores</span>
-                  </div>
-                  <div class="bg-zinc-900/60 border border-zinc-800/60 p-2.5 rounded-lg">
-                    <span class="block text-zinc-500 uppercase text-[9px] font-semibold mb-0.5">Digest Cycle</span>
-                    <span class="text-zinc-200 font-semibold text-xs">Automated 24h cron script</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Footer Toggles & Tags -->
-          <div class="mt-8 flex flex-col gap-4">
-            <button data-project-id="news-collage-nlp"
-              class="project-toggle-btn flex items-center gap-1 text-xs font-semibold text-violet-400 hover:text-violet-300 cursor-pointer self-start">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="chevron-icon">
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-              <span class="btn-text">Show Details</span>
-            </button>
-
-            <div class="flex flex-wrap gap-1.5 border-t border-zinc-800/60 pt-4">
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">NLP</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">Python</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">Web
-                Scraping</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">Data
-                Aggregation</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">Beautiful
-                Soup</span>
-              <span
-                class="px-2.5 py-0.5 text-[10px] font-medium bg-violet-500/5 text-violet-300 border border-violet-500/10 rounded">spaCy</span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- 3. SKILLS VIEW -->
-    <section id="section-skills" class="section-content hidden space-y-8 py-4">
-      <div class="border-b border-zinc-900 pb-5">
-        <h2 class="text-3xl font-bold tracking-tight text-white">Technical Matrix</h2>
-        <p class="text-sm text-zinc-400 mt-2 max-w-xl">
-          Overview of core engineering capabilities, systems languages, and hardware toolchains.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <!-- Languages & Frameworks -->
-        <div
-          class="skill-card bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-6 md:p-8 space-y-6 relative overflow-hidden">
-          <div class="flex items-center gap-3">
-            <div
-              class="w-9 h-9 rounded-lg bg-zinc-850 border border-zinc-800 flex items-center justify-center text-violet-400">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="text-violet-400">
-                <polyline points="16 18 22 12 16 6" />
-                <polyline points="8 6 2 12 8 18" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-bold text-white">Languages &amp; Frameworks</h3>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">C/C++</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">Python</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">SystemVerilog / Verilog</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">JavaScript / TypeScript</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">React Native / React</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">Assembly (ARM)</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">Java</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">SQL</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">Flask / Node.js</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">MATLAB / Simulink</span>
-            </div>
           </div>
         </div>
 
-        <!-- AI & Machine Vision -->
-        <div
-          class="skill-card bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-6 md:p-8 space-y-6 relative overflow-hidden">
-          <div class="flex items-center gap-3">
-            <div
-              class="w-9 h-9 rounded-lg bg-zinc-850 border border-zinc-800 flex items-center justify-center text-violet-400">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="text-violet-400">
-                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
+        <!-- Right Column: Clean Institutional Profile Summary -->
+        <div class="lg:col-span-5">
+          <div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-violet-500/5 rounded-bl-full blur-2xl pointer-events-none">
             </div>
-            <h3 class="text-lg font-bold text-white">AI &amp; Machine Vision</h3>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">PyTorch</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">TensorFlow</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">OpenCV</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">YOLOv8 Object Detection</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">Keras</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">Image Processing Algorithms</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">MediaPipe</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">Data Pipeline Engineering</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Cloud, OS, & Infra -->
-        <div
-          class="skill-card bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-6 md:p-8 space-y-6 relative overflow-hidden">
-          <div class="flex items-center gap-3">
-            <div
-              class="w-9 h-9 rounded-lg bg-zinc-850 border border-zinc-800 flex items-center justify-center text-violet-400">
+            <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="text-violet-400">
                 <path
-                  d="M17.5 19A3.5 3.5 0 0 0 21 15.5c0-2.79-2.54-4.5-5-4.5-.42 0-.83.04-1.24.12A7 7 0 0 0 2 11.5c0 3.42 2.78 6.2 6.2 6.2H17.5Z" />
+                  d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
               </svg>
-            </div>
-            <h3 class="text-lg font-bold text-white">Cloud, OS, &amp; Infra</h3>
-          </div>
+              <span>Education &amp; Credentials</span>
+            </h3>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">AWS (S3, EC2)</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">Docker Containers</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">GCP Cloud Engine</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">Linux Core Utilities</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">Git &amp; Automated CI/CD</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">Jenkins Automation</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">Microservice Architectures</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hardware & Architecture -->
-        <div
-          class="skill-card bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-6 md:p-8 space-y-6 relative overflow-hidden">
-          <div class="flex items-center gap-3">
-            <div
-              class="w-9 h-9 rounded-lg bg-zinc-850 border border-zinc-800 flex items-center justify-center text-violet-400">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="text-violet-400">
-                <rect width="16" height="16" x="4" y="4" rx="2" />
-                <rect width="6" height="6" x="9" y="9" rx="1" />
-                <path d="M9 1v3" />
-                <path d="M15 1v3" />
-                <path d="M9 20v3" />
-                <path d="M15 20v3" />
-                <path d="M20 9h3" />
-                <path d="M20 15h3" />
-                <path d="M1 9h3" />
-                <path d="M1 15h3" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-bold text-white">Hardware &amp; Architecture</h3>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">FPGA Design (Xilinx, Altera)</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">ASIC Design Paradigms</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">PCB Schematic &amp; Routing</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">Oscilloscopes &amp; Logic Analyzers</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">ARM Cortex M Series MCUs</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">CAN, SPI, I2C, UART Buses</span>
-            </div>
-            <div class="bg-zinc-950 border border-zinc-800/60 rounded-lg p-3 hover:border-zinc-700 transition-colors">
-              <span class="text-xs font-semibold text-zinc-200">HDL Vivado Synthesis</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- 4. ACHIEVEMENTS VIEW -->
-    <section id="section-achievements" class="section-content hidden space-y-8 py-4">
-      <div class="border-b border-zinc-900 pb-5">
-        <h2 class="text-3xl font-bold tracking-tight text-white">Achievements &amp; Milestones</h2>
-        <p class="text-sm text-zinc-400 mt-2 max-w-xl">
-          Professional society memberships, academic milestones, and engineering projects.
-        </p>
-      </div>
-
-      <div class="space-y-10">
-
-        <!-- Milestones Section -->
-        <div class="space-y-6">
-          <h3 class="text-sm font-semibold uppercase text-zinc-500 tracking-wider">
-            Milestones
-          </h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-            <!-- RRB NTPC -->
-            <div
-              class="achievement-card p-6 bg-zinc-900/40 border border-zinc-800/80 rounded-xl hover:border-zinc-700 transition-colors relative overflow-hidden">
-              <div class="flex items-start justify-between mb-4">
-                <div
-                  class="w-8 h-8 rounded-lg bg-zinc-850 border border-zinc-800 flex items-center justify-center text-violet-400 flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="text-violet-400">
-                    <circle cx="12" cy="8" r="7" />
-                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                  </svg>
-                </div>
-                <div class="flex items-center gap-2">
-                  <span
-                    class="text-xs font-medium bg-zinc-800 border border-zinc-700 text-zinc-400 rounded-lg px-2 py-0.5">
-                    2024
-                  </span>
-                </div>
-              </div>
-              <div class="space-y-1">
-                <h4 class="font-bold text-sm text-white">RRB NTPC</h4>
-                <p class="text-xs text-zinc-400 font-medium">Railway Recruitment Board &bull; Strategist Preparator</p>
-                <p class="text-xs text-zinc-400 pt-2 leading-relaxed">Preparing for the Railway Recruitment Board
-                  Non-Technical Popular Categories examination with a selective discipline on advanced quantitative
-                  analysis, multi-stage logic planning, and general awareness schemas.</p>
-              </div>
-            </div>
-
-            <!-- Technical Milestone 1 -->
-            <div
-              class="achievement-card p-6 bg-zinc-900/40 border border-zinc-800/80 rounded-xl hover:border-zinc-700 transition-colors relative overflow-hidden">
-              <div class="flex items-start justify-between mb-4">
-                <div
-                  class="w-8 h-8 rounded-lg bg-zinc-850 border border-zinc-800 flex items-center justify-center text-violet-400 flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="text-violet-400">
-                    <circle cx="12" cy="8" r="7" />
-                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                  </svg>
-                </div>
-                <div class="flex items-center gap-2">
-                  <span
-                    class="text-xs font-medium bg-zinc-800 border border-zinc-700 text-zinc-400 rounded-lg px-2 py-0.5">
-                    2024
-                  </span>
-                </div>
-              </div>
-              <div class="space-y-1">
-                <h4 class="font-bold text-sm text-white">Technical Milestone 1</h4>
-                <p class="text-xs text-zinc-400 font-medium">Autonomous Systems Research Core &bull; Primary Synthesizer
-                </p>
-                <p class="text-xs text-zinc-400 pt-2 leading-relaxed">Developing primary hardware-software middleware
-                  pipelines. Currently integrating Real-Time Task Schedulers on ARM architecture and ensuring
-                  high-fidelity signal latency under high bandwidth spikes.</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Professional Affiliations Section -->
-        <div class="space-y-6 pt-10 border-t border-zinc-900/60">
-          <h3 class="text-sm font-semibold uppercase text-zinc-500 tracking-wider">
-            Professional Affiliations
-          </h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-            <!-- Texas Instruments Design Challenge -->
-            <div
-              class="achievement-card p-6 bg-zinc-900/40 border border-zinc-800/80 rounded-xl hover:border-zinc-700 transition-colors relative overflow-hidden">
-              <div class="flex items-start justify-between mb-4">
-                <div
-                  class="w-8 h-8 rounded-lg bg-zinc-850 border border-zinc-800 flex items-center justify-center text-violet-400 flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="text-violet-400">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                </div>
-              </div>
-              <div class="space-y-1">
-                <h4 class="font-bold text-sm text-white">Texas Instruments Design Challenge</h4>
-                <p class="text-xs text-zinc-400 font-medium">Finalist - Low Power Analog Design</p>
-                <p class="text-xs text-zinc-400 pt-2 leading-relaxed">Designed a battery-aware analog sensing platform
-                  using low-drift instrumentation operational amplifiers, achieving ultra-low quiescent sleep cycles.
+            <div class="space-y-6">
+              <div class="border-l-2 border-emerald-500/30 pl-4 space-y-1">
+                <h4 id="profile-college" class="text-sm font-semibold text-white">University Name</h4>
+                <p id="profile-title" class="text-xs text-emerald-400">Department</p>
+                <p id="profile-college-desc" class="text-xs text-zinc-400 leading-relaxed pt-1">
+                  Focus area description.
                 </p>
               </div>
             </div>
-
-            <!-- Tau Beta Pi Engineering Honor Society -->
-            <div
-              class="achievement-card p-6 bg-zinc-900/40 border border-zinc-800/80 rounded-xl hover:border-zinc-700 transition-colors relative overflow-hidden">
-              <div class="flex items-start justify-between mb-4">
-                <div
-                  class="w-8 h-8 rounded-lg bg-zinc-850 border border-zinc-800 flex items-center justify-center text-violet-400 flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="text-violet-400">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                </div>
-              </div>
-              <div class="space-y-1">
-                <h4 class="font-bold text-sm text-white">Tau Beta Pi Engineering Honor Society</h4>
-                <p class="text-xs text-zinc-400 font-medium">Active Selective Member</p>
-                <p class="text-xs text-zinc-400 pt-2 leading-relaxed">Inducted based on academic placement in the top
-                  engineering quartile. Contributed to peer mentoring of sophomore electronics students and corporate
-                  engineering events.</p>
-              </div>
-            </div>
-
-            <!-- IEEE Student Chapter -->
-            <div
-              class="achievement-card p-6 bg-zinc-900/40 border border-zinc-800/80 rounded-xl hover:border-zinc-700 transition-colors relative overflow-hidden">
-              <div class="flex items-start justify-between mb-4">
-                <div
-                  class="w-8 h-8 rounded-lg bg-zinc-850 border border-zinc-800 flex items-center justify-center text-violet-400 flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="text-violet-400">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                </div>
-              </div>
-              <div class="space-y-1">
-                <h4 class="font-bold text-sm text-white">IEEE Student Chapter</h4>
-                <p class="text-xs text-zinc-400 font-medium">Hardware Committee Lead</p>
-                <p class="text-xs text-zinc-400 pt-2 leading-relaxed">Organized and optimized hands-on embedded
-                  workshops. Coordinated development tracks for autonomous systems and represented team engineering
-                  models at state symposiums.</p>
-              </div>
-            </div>
-
-            <!-- NDLI Club -->
-            <div
-              class="achievement-card p-6 bg-zinc-900/40 border border-zinc-800/80 rounded-xl hover:border-zinc-700 transition-colors relative overflow-hidden">
-              <div class="flex items-start justify-between mb-4">
-                <div
-                  class="w-8 h-8 rounded-lg bg-zinc-850 border border-zinc-800 flex items-center justify-center text-violet-400 flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="text-violet-400">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                </div>
-              </div>
-              <div class="space-y-1">
-                <h4 class="font-bold text-sm text-white">NDLI Club</h4>
-                <p class="text-xs text-zinc-400 font-medium">Active Member / Reviewer</p>
-                <p class="text-xs text-zinc-400 pt-2 leading-relaxed">Collaborating on academic discourse platforms and
-                  utilizing digital libraries of India to research advanced compute techniques. Actively contributing
-                  technical review briefings.</p>
-              </div>
-            </div>
-
           </div>
+        </div>
+      </section>
+
+      <!-- 2. PROJECTS VIEW -->
+      <section id="section-projects" class="section-content hidden space-y-8 py-4">
+        <div class="border-b border-zinc-900 pb-5">
+          <h2 class="text-3xl font-bold tracking-tight text-white">Engineered Systems &amp; Projects</h2>
+          <p class="text-sm text-zinc-400 mt-2 max-w-xl">
+            A showcase of hardware synthesis, edge computer vision platforms, and control systems.
+          </p>
+        </div>
+
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Populated dynamically from config.js -->
+        </div>
+      </section>
+
+      <!-- 3. SKILLS VIEW -->
+      <section id="section-skills" class="section-content hidden space-y-8 py-4">
+        <div class="border-b border-zinc-900 pb-5">
+          <h2 class="text-3xl font-bold tracking-tight text-white">Technical Matrix</h2>
+          <p class="text-sm text-zinc-400 mt-2 max-w-xl">
+            Overview of core engineering capabilities, systems languages, and hardware toolchains.
+          </p>
+        </div>
+
+        <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Populated dynamically from config.js -->
+        </div>
+      </section>
+
+      <!-- 4. ACHIEVEMENTS VIEW -->
+      <section id="section-achievements" class="section-content hidden space-y-8 py-4">
+        <div class="border-b border-zinc-900 pb-5">
+          <h2 class="text-3xl font-bold tracking-tight text-white">Achievements &amp; Milestones</h2>
+          <p class="text-sm text-zinc-400 mt-2 max-w-xl">
+            Professional society memberships, academic milestones, and engineering projects.
+          </p>
+        </div>
+
+        <div id="achievements-container" class="space-y-10">
+          <!-- Populated dynamically from config.js -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom ambient glow -->
+    <div class="fixed bottom-0 left-0 w-full h-[300px] footer-glow pointer-events-none z-0"></div>
+
+    <!-- FOOTER -->
+    <footer class="fixed bottom-0 left-0 w-full z-40 bg-[#050507]/85 backdrop-blur-md border-t border-zinc-900 py-4 px-6">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <span id="footer-name" class="font-bold text-sm text-white">
+            Developer
+          </span>
+          <span id="footer-title" class="text-[10px] text-zinc-500 uppercase font-semibold tracking-wider">
+            Professional Title
+          </span>
+        </div>
+
+        <div class="text-center md:text-left text-xs text-zinc-500 font-medium">
+          <span id="footer-copyright">© 2026 Developer. All rights reserved.</span>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a id="link-linkedin" href="#" target="_blank" rel="noopener noreferrer"
+            class="p-2 text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-900 border border-zinc-800 rounded-lg transition-colors"
+            title="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-linkedin">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect width="4" height="12" x="2" y="9" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+          </a>
+          <a id="link-github" href="#" target="_blank" rel="noopener noreferrer"
+            class="p-2 text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-900 border border-zinc-800 rounded-lg transition-colors"
+            title="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-github">
+              <path
+                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+              <path d="M9 18c-4.51 2-5-2-7-2" />
+            </svg>
+          </a>
+          <a id="link-email" href="#" target="_blank" rel="noopener noreferrer"
+            class="p-2 text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-900 border border-zinc-800 rounded-lg transition-colors"
+            title="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-mail">
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+          </a>
+          <a id="link-phone" href="#"
+            class="p-2 text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-900 border border-zinc-800 rounded-lg transition-colors"
+            title="Phone">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-phone">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+          </a>
         </div>
 
       </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="w-full bg-zinc-950 border-t border-zinc-900 mt-16 py-10 px-6 footer-glow">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-
-      <div class="flex flex-col items-center md:items-start gap-1">
-        <span id="footer-name" class="font-bold text-sm text-white">
-          Abrar M.
-        </span>
-        <span id="footer-title" class="text-[10px] text-zinc-500 uppercase font-semibold tracking-wider">
-          Electrical &amp; Computer Engineering
-        </span>
-      </div>
-
-      <div class="text-center md:text-left text-xs text-zinc-500 font-medium">
-        <span id="footer-copyright">© 2026 Abrar M. All rights reserved.</span>
-      </div>
-
-      <div class="flex items-center gap-3">
-        <a id="link-linkedin" href="#" target="_blank" rel="noopener noreferrer"
-          class="p-2 text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-900 border border-zinc-800 rounded-lg transition-colors"
-          title="LinkedIn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="lucide lucide-linkedin">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-            <rect width="4" height="12" x="2" y="9" />
-            <circle cx="4" cy="4" r="2" />
-          </svg>
-        </a>
-        <a id="link-github" href="#" target="_blank" rel="noopener noreferrer"
-          class="p-2 text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-900 border border-zinc-800 rounded-lg transition-colors"
-          title="GitHub">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="lucide lucide-github">
-            <path
-              d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-            <path d="M9 18c-4.51 2-5-2-7-2" />
-          </svg>
-        </a>
-        <a id="link-email" href="#" target="_blank" rel="noopener noreferrer"
-          class="p-2 text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-900 border border-zinc-800 rounded-lg transition-colors"
-          title="Email">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="lucide lucide-mail">
-            <rect width="20" height="16" x="2" y="4" rx="2" />
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-          </svg>
-        </a>
-        <a id="link-phone" href="#"
-          class="p-2 text-zinc-400 hover:text-white bg-zinc-900/50 hover:bg-zinc-900 border border-zinc-800 rounded-lg transition-colors"
-          title="Phone">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="lucide lucide-phone">
-            <path
-              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-          </svg>
-        </a>
-      </div>
-
-    </div>
-  </footer>
+    </footer>
 
   </div> <!-- End Mobile Layout Wrapper -->
 
